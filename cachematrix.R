@@ -1,6 +1,6 @@
 
 # Create a matrix that can cache its inverse
-makeCachematrix <- function( mt = matrix() ) {
+makeCachematrix <- function( mt = matrix()) {
   
   # Set inverse property
   i <- NULL
@@ -50,7 +50,7 @@ cacheSolve <- function(x, ...) {
   data <- x$get()
   
   # Calculate the inverse using matrix mtultiplication
-  mt <- solve(data) %*% data
+  mt <- solve(data, ...)
   
   # Set the inverse to the obj
   x$setInverse(mt)
@@ -58,3 +58,8 @@ cacheSolve <- function(x, ...) {
   # Return the matrix
   mt
 }
+
+# Used to test cacheSolve
+a <- makeCachematrix()     #create functions
+a$set(matrix(0:3, 2, 2))   #create matrix in working environment
+cacheSolve(a)              #1st run returns inverted matrix
